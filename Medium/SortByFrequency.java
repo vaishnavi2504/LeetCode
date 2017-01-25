@@ -10,18 +10,18 @@ public class Solution {
           LinkedHashMap<Character, Integer> sortedMap =new LinkedHashMap<>();
           Iterator<Integer> valueIt = mapValues.iterator();
            while (valueIt.hasNext()) {
-           Integer val = valueIt.next();
-           Iterator<Character> keyIt = mapKeys.iterator();
-           while (keyIt.hasNext()) {
-                Character key = keyIt.next();
-                Integer comp1 = passedMap.get(key);
-                Integer comp2 = val;
-                if (comp1.equals(comp2)) {
-                              keyIt.remove();
-                              sortedMap.put(key, val);
-                              break;
-                }
-           }
+               Integer val = valueIt.next();
+               Iterator<Character> keyIt = mapKeys.iterator();
+               while (keyIt.hasNext()) {
+                    Character key = keyIt.next();
+                    Integer comp1 = passedMap.get(key);
+                    Integer comp2 = val;
+                    if (comp1.equals(comp2)) {
+                                  keyIt.remove();
+                                  sortedMap.put(key, val);
+                                  break;
+                    }
+               }
          }
         return sortedMap;
     }
