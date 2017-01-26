@@ -1,6 +1,3 @@
-//https://leetcode.com/problems/number-complement/
-
-
 public class Solution {
     
     public int binToint(String s){
@@ -11,8 +8,6 @@ public class Solution {
         }
         return res;
     }
-    
-    
     public int findComplement(int num) {
         StringBuilder sb=new StringBuilder();
         int count=0;
@@ -22,7 +17,7 @@ public class Solution {
             else sb.append("1");
             num=num>>>1;
         }
-        return new String(sb.reverse()));
+         return binToint(new String(sb.reverse()));
         
     }
 }
