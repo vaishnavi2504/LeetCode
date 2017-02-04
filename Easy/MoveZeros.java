@@ -19,8 +19,7 @@ public class Solution {
     }
     //Approach 2- involves swapping
     public void moveZeroes(int[] a) {
-        int n=a.length;
-        if(n<=1)return;
+        int n=a.length;       
         int i=0,j=1;
         for(;i<n&&j<n;){
              if(a[i]==0&&a[j]!=0){
