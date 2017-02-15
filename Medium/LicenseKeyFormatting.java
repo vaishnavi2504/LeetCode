@@ -1,5 +1,9 @@
 
+//https://leetcode.com/problems/license-key-formatting/
 
+//Start from the last character of the string, 
+//Use String builder to append
+//Identify the position at which '-' needs to be inserted
 public class Solution {
     public String licenseKeyFormatting(String S, int K) {
     
