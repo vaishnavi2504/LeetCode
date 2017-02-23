@@ -21,3 +21,19 @@ public class Solution {
         }return b[i++];    
     }
 }
+
+//Metjod 2using xor bitwise O(n) timepublic class Solution {
+    public char findTheDifference(String s, String t) {        
+        char chk=0;
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            chk^=c;
+        }
+        for(int i=0;i<s.length();i++){
+            char c=t.charAt(i);
+            chk^=c;
+        }
+        return c;
+    }
+}
+
