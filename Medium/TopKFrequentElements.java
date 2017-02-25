@@ -1,3 +1,6 @@
+//https://leetcode.com/problems/top-k-frequent-elements/?tab=Description
+//2 approaches
+
 public class Solution {
     
     public static List getKey(Map hm, int v){
@@ -36,4 +39,52 @@ public class Solution {
 	        }
        return res; 
     }
+}
+
+
+//Approach 2- using PQ 
+
+public class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+       Set<Integer> st=new HashSet<>();
+       List<Integer> res=new ArrayList<Integer>();
+       //Populate hashMap
+       HashMap<Integer,Integer> hm=new HashMap<>();
+       for(int x: nums){
+           if(!hm.containsKey(x))hm.put(x,1);
+            else hm.put(x,hm.get(x)+1);
+       }
+       
+       //Use set to store all possible values
+       for(int x:hm.keySet())st.add(hm.get(x));
+       
+       PriorityQueue < Integer >  pq = new PriorityQueue < Integer >(Collections.reverseOrder());
+       Iterator<Integer> stit=st.iterator();
+       
+       while(stit.hasNext()){
+           pq.offer(stit.next());
+       }
+       
+       while(pq.peek()!=null){
+           List<Integer> al=keyFromVal(hm,(int)pq.poll());
+           Iterator<Integer> it1=al.iterator();
+           while(it1.hasNext()){
+               res.add(it1.next());
+               if(res.size()==k)return res;
+           }
+       }
+       return res;
+       
+    }
+    
+    //fetches key from value
+    public List<Integer> keyFromVal(HashMap<Integer,Integer> hm, int x){
+      List<Integer> res=new ArrayList<>();
+        for(int y:hm.keySet()){
+            if(x==hm.get(y)){
+                res.add((int)(y));
+            }
+        }return res;
+    }
+  
 }
