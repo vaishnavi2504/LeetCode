@@ -7,8 +7,7 @@ public class Solution {
         for(;i<s.length();++i){
             char c=s.charAt(i);
             if(hm.containsKey(c)){
-                //l points to the beginning of the non repeating characters sub string
-                //Tricky part so pay attention
+                //l points to the beginning of the non repeating characters sub string               
                 l=Math.max(j,hm.get(c)+1);
             }
             hm.put(c,i);
