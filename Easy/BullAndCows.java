@@ -79,4 +79,34 @@ public class Solution {
         return res;
         
     }
+	
+	//Method 3
+	
+	public class Solution {
+    public String getHint(String secret, String guess) {
+        char[] s=secret.toCharArray();
+        char[] g=guess.toCharArray();
+        int bull=0,cow=0;
+        Map<Character, Integer> hm=new HashMap<>();
+        Map<Character, Integer> hm1=new HashMap<>();
+        for(int i=0;i<s.length;i++){
+            if(s[i]==g[i])bull++;
+            else{
+                if(!hm.containsKey(s[i]))hm.put(s[i],1);
+                else hm.put(s[i],hm.get(s[i])+1);
+                
+                if(!hm1.containsKey(g[i]))hm1.put(g[i],1);
+                else hm1.put(g[i],hm1.get(g[i])+1);
+            }
+        }
+        for(char c:hm1.keySet()){
+            if(hm.containsKey(c)){
+                if(hm.get(c)==hm1.get(c))cow+=hm.get(c);
+                else cow+=Math.min(hm1.get(c),hm.get(c));
+            }
+        }
+        String ans=bull+"A"+cow+"B";
+        return ans;
+    	}
+    }
 }
