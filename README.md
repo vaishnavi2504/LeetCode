@@ -1,2 +1,2 @@
 # LeetCode
-Practice problems from Leetcode
+My submissions for coding problems on Leetcode.
