@@ -1,8 +1,33 @@
 //https://leetcode.com/problems/top-k-frequent-elements/?tab=Description
-//2 approaches
+//3 approaches
 
-public class Solution {
-    
+//Approach1: using custom comparator for priorityQueue
+public List<Integer> topKFrequent(int[] nums, int k) {
+        Map<Integer,Integer> hm=new HashMap<>();
+        for(int x:nums){
+            if(!hm.containsKey(x))hm.put(x,1);
+            else hm.put(x,hm.get(x)+1);
+        }
+       
+         PriorityQueue<HashMap.Entry<Integer, Integer>> pq=new PriorityQueue<>(new Comparator<Map.Entry<Integer, Integer>>() {
+	                public int compare(Map.Entry<Integer, Integer> w1, Map.Entry<Integer, Integer> w2) {                    
+	                    return w2.getValue().compareTo(w1.getValue());  
+	                }      
+	    });  	  
+        
+        for(Map.Entry<Integer,Integer> e:hm.entrySet()){
+            pq.offer(e);
+        }
+        List<Integer> res=new ArrayList<>();
+        int count=0;
+        while(count<k){
+            res.add(pq.poll().getKey());
+            count++;
+        }
+        return res;
+}
+
+public class Solution {    
     public static List getKey(Map hm, int v){
 		 List<Integer> al=new ArrayList<>();
 	        for(Object x:hm.keySet()){
@@ -37,7 +62,7 @@ public class Solution {
 	        		k--;
 	        	}
 	        }
-       return res; 
+			return res; 
     }
 }
 
