@@ -1,0 +1,39 @@
+//https://leetcode.com/problems/basic-calculator-ii/#/description
+
+public class Solution {
+    public int calculate(String s) {
+        //Remove extra spaces
+        s=s.replaceAll("\\s+","");
+        int num=0,res=0;
+        char sign='+';
+        Stack<Integer> st=new Stack<>();
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(Character.isDigit(c)){
+                num=(num*10)+(c-'0');
+            }
+            //If you've reached the last character of the string then you need to complete the computation by entering this loop
+            if(i==s.length()-1||!Character.isDigit(c)){
+                switch(sign){
+                    case '+':st.push(num);
+                             break;
+                    case '-':st.push(-num);
+                             break;
+                    case '*':st.push(st.pop()*num);
+                             break;
+                    case '/':st.push(st.pop()/num);
+                             break;
+                    default: break;
+                }
+                sign=c;
+                num=0;
+            }
+            
+        }
+        for(int x:st){
+            res+=x;
+        }
+        return res;
+        
+    }
+}
