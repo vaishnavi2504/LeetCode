@@ -19,7 +19,7 @@ public class Solution {
     }
 }
 
-//Approach2 Using hashet
+//Approach2 Using hashset
 
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
