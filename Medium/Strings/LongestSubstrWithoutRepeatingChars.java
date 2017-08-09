@@ -1,5 +1,30 @@
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
+//Approach1; general  approach for sub string related problems
+
+public class Solution {
+    public int lengthOfLongestSubstring(String s1) {
+        int[] count=new int[256];
+        char[] s=s1.toCharArray();
+        
+        int len=0, l=0, r=0, maxLen=0; 
+        while(r<s.length){
+            if(count[s[r]]>0) len++; // To indicate there is len number of redundant characters
+            count[s[r]]++;  
+            r++;
+            while(len>0){ // we determine characters that are redundant my checking if count[l]>1
+                // if try to reduce the count by 1 and len by 1 until len=0
+                if(count[s[l]]>1) len--;
+                count[s[l]]--;
+                l++;
+            }
+            maxLen=Math.max(maxLen, r-l);            
+        }
+        return maxLen;
+    }
+}
+
+
 //Approach1
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
